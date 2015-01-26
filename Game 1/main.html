@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="main.js"></script>
+		<script src="entities/soldier.js"></script>
+		<script src="entities/hero.js"></script>
+		<script src="entities/monster.js"></script>
+		<script src="input.js"></script>
+		<script src="http://code.createjs.com/easeljs-0.8.0.min.js"></script>
+		<script src="http://code.createjs.com/tweenjs-0.6.0.min.js"></script>
+	</head>
+	
+	<body onload="init()">
+		<table>
+			<th>Entities</th>
+			<th>Deadpool</th>
+			<th>Red Score</th>
+			<th>Blue Score</th>
+			<th>Last Key</th>
+			<th>Ticks</th>
+			<tr>
+				<td id="entityNum">-1</td>
+				<td id="deadpoolNum">-1</td>
+				<td id="redScore">-1</td>
+				<td id="blueScore">-1</td>
+				<td id="lastKey"></td>
+				<td id="tickNum"></td>
+			</tr>
+		</table>
+		<canvas id="canvas" width="512" height="480"></canvas>
+		<div>
+			<h3>Entities</h3>
+			<p id="entityList"></p>
+			<h3>Deadpool</h3>
+			<p id="deadpool"></p>
+		</div>
+	</body>
+</html>
