@@ -31,7 +31,6 @@ function render() {
 			ctx.drawImage(heroImage, entities[i].x, entities[i].y);
 		else
 			ctx.drawImage(monsterImage, entities[i].x, entities[i].y);
-			
 	}
 }
 
@@ -45,8 +44,10 @@ function update() {
 			updateEntities();
 	}
 	if(runTime % 10 == 0) {
-		makeSoldier("red");
-		makeSoldier("blue");
+		if(!paused) {
+			makeSoldier("red");
+			makeSoldier("blue");
+		}
 	}
 	runTime = runTime + 1;
 }
@@ -77,6 +78,8 @@ function loadImages() {
 	heroImage.src = "images/hero.png";
 	monsterImage.src = "images/monster.png";
 }
+
+//Debug stuff
 function info() {
 	console.log("Entities: ");
 	checkEntities();
