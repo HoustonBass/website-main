@@ -40,15 +40,13 @@ function update() {
 		updateText();
 		render();
 	}
-	if(runTime % 1 == 0) {
+	if(runTime % 2 == 0) {
 		if(!paused)
 			updateEntities();
 	}
-	if(runTime % 200 == 0) {
-		if(!paused) {
-			makeSoldier("red");
-			makeSoldier("blue");
-		}
+	if(runTime % 10 == 0) {
+		makeSoldier("red");
+		makeSoldier("blue");
 	}
 	runTime = runTime + 1;
 }

@@ -14,8 +14,8 @@ soldier.prototype.setDefaults = function(team) {
 	this.behavior = "";
 	
 	this.target = -1;
-	this.target.x = -1;
-	this.target.y = -1;
+	this.targetX = -1;
+	this.targetY = -1;
 	//spawn setter
 	if(team == "red")
 		this.x = 10;
@@ -36,7 +36,7 @@ function makeSoldier(team) {
 		entities.push(tmpSoldier);
 	}
 }
-soldier.prototype.updateBehavior = function() { 
+soldier.prototype.updateBehavior = function() { //agrressive pursuit command
 	if(this.health <= 0) {
 		for(var i=0; i<entities.length; i++) 
 			if(entities[i].id == this.id)
@@ -47,14 +47,12 @@ soldier.prototype.updateBehavior = function() {
 		else
 			redScore = redScore + 1;
 	} else {
-		if(this.target == -1)
-			this.findTarget();
 		if(this.behavior == "" && this.target == -1)
 			this.findTarget();
 		if(this.behavior == "command")	 
 			this.updatePosition();
 		if(this.behavior == "pursuit") 
-			if(Math.sqrt(Math.pow(this.target.x - this.x, 2) + Math.pow(this.target.y - this.y, 2)) < this.range) //target within range
+			if(Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) < this.range) //target within range
 				this.attack();
 			else
 				this.updatePosition();
@@ -71,8 +69,10 @@ soldier.prototype.attack = function() {
 	}
 }
 soldier.prototype.updatePosition = function() {	
-	this.x = this.x + (this.target.x - this.x) / Math.sqrt(Math.pow(this.target.x - this.x, 2) + Math.pow(this.target.y - this.y, 2)) * this.moveSpeed;
-	this.y = this.y + (this.target.y - this.y) / Math.sqrt(Math.pow(this.target.x - this.x, 2) + Math.pow(this.target.y - this.y, 2)) * this.moveSpeed;
+	this.targetX = this.target.x;
+	this.targetY = this.target.y;
+	this.x = this.x + (this.targetX - this.x) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) * this.moveSpeed;
+	this.y = this.y + (this.targetY - this.y) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) * this.moveSpeed;
 }
 
 //Getters
@@ -88,12 +88,12 @@ soldier.prototype.setTarget = function(id) {
 	if(id != -1) {
 		this.target = entities[id];
 		this.behavior = "pursuit";
-		this.target.x = this.target.x;
-		this.target.y = this.target.y;
+		this.targetX = this.target.x;
+		this.targetY = this.target.y;
 	} else {
 		this.behavior = "";
-		this.target.x = -1;
-		this.target.y = -1;
+		this.targetX = -1;
+		this.targetY = -1;
 		this.target = -1;
 	}
 }
@@ -112,9 +112,15 @@ soldier.prototype.findTarget = function() {
 		}
 	}
 	this.setTarget(tmpTarget);
+		
 }
 
 //toString
 soldier.prototype.toString = function soldierToString() {
-	return "| ID: " + this.id + " | HP:" + this.health;
+	return " | HP:"+this.health + "| ID: " + this.id; //+ " | tar:"+this.target; 
+		//+ " | targetHP:" + this.target.health + ",targetX,Y:"+Math.round(this.targetX)+","+Math.round(this.targetY)+" | behavior:"+this.behavior
+		//"x: "+Math.round(this.x)+",y:"+Math.round(this.y) + 
+		//+" | attackTick:"+this.attackTick;
+		//"|Xmove:"+(this.targetX - this.x) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2))
+		//+"|Ymove:"+(this.targetY - this.y) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) * this.moveSpeed;
 }
