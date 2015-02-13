@@ -14,8 +14,6 @@ soldier.prototype.setDefaults = function(team) {
 	this.behavior = "";
 	
 	this.target = -1;
-	this.targetX = -1;
-	this.targetY = -1;
 	//spawn setter
 	if(team == "red")
 		this.x = 10;
@@ -52,7 +50,7 @@ soldier.prototype.updateBehavior = function() { //agrressive pursuit command
 		if(this.behavior == "command")	 
 			this.updatePosition();
 		if(this.behavior == "pursuit") 
-			if(Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) < this.range) //target within range
+			if(Math.sqrt(Math.pow(this.target.x - this.x, 2) + Math.pow(this.target.y - this.y, 2)) < this.range) //target within range
 				this.attack();
 			else
 				this.updatePosition();
@@ -69,10 +67,8 @@ soldier.prototype.attack = function() {
 	}
 }
 soldier.prototype.updatePosition = function() {	
-	this.targetX = this.target.x;
-	this.targetY = this.target.y;
-	this.x = this.x + (this.targetX - this.x) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) * this.moveSpeed;
-	this.y = this.y + (this.targetY - this.y) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) * this.moveSpeed;
+	this.x = this.x + (this.target.x - this.x) / Math.sqrt(Math.pow(this.target.x - this.x, 2) + Math.pow(this.target.y - this.y, 2)) * this.moveSpeed;
+	this.y = this.y + (this.target.y - this.y) / Math.sqrt(Math.pow(this.target.x - this.x, 2) + Math.pow(this.target.y - this.y, 2)) * this.moveSpeed;
 }
 
 //Getters
@@ -88,19 +84,14 @@ soldier.prototype.setTarget = function(id) {
 	if(id != -1) {
 		this.target = entities[id];
 		this.behavior = "pursuit";
-		this.targetX = this.target.x;
-		this.targetY = this.target.y;
 	} else {
 		this.behavior = "";
-		this.targetX = -1;
-		this.targetY = -1;
 		this.target = -1;
 	}
 }
 
 //Setters
 soldier.prototype.findTarget = function() {
-	console.log(this.id + " looking for target")
 	var tmpTarget = -1;
 	for( var i = 0; i < entities.length; i++) {
 		if(this.id != entities[i].id && this.team != entities[i].team) { //not this and different team and no target
@@ -117,10 +108,5 @@ soldier.prototype.findTarget = function() {
 
 //toString
 soldier.prototype.toString = function soldierToString() {
-	return " | HP:"+this.health + "| ID: " + this.id; //+ " | tar:"+this.target; 
-		//+ " | targetHP:" + this.target.health + ",targetX,Y:"+Math.round(this.targetX)+","+Math.round(this.targetY)+" | behavior:"+this.behavior
-		//"x: "+Math.round(this.x)+",y:"+Math.round(this.y) + 
-		//+" | attackTick:"+this.attackTick;
-		//"|Xmove:"+(this.targetX - this.x) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2))
-		//+"|Ymove:"+(this.targetY - this.y) / Math.sqrt(Math.pow(this.targetX - this.x, 2) + Math.pow(this.targetY - this.y, 2)) * this.moveSpeed;
+	return " | HP:"+this.health + "| ID: " + this.id;
 }
