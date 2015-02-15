@@ -103,7 +103,6 @@ soldier.prototype.findTarget = function() {
 		}
 	}
 	this.setTarget(tmpTarget);
-		
 }
 
 //toString
