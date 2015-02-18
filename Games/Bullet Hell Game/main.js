@@ -5,7 +5,7 @@ function init() {
 	canvas = document.getElementById('canvas');
 	ctx = canvas.getContext('2d');
 	guns = [], bullets = [], missiles = [];
-	player = new player(document.getElementById('canvas'));
+	player = new player();
 	runTime = 0;
 	loadImages();
 	main();
@@ -15,11 +15,11 @@ function main() {
 	requestAnimationFrame(main);
 }
 function update() {
+	renderBackGround(canvas, ctx);
+	updateEntities();
+	updateText();
 	if(runTime % 1 == 0) {
-		renderBackGround(canvas, ctx);
-		updatePlayer(ctx);
-		updateEnemys(ctx);
-		//updateText();
+		//nothing yet
 	}
 	if(runTime % 5 == 0) {
 		makeGun(Math.random() * (canvas.width - 20) + 10, 20, "down");
@@ -27,47 +27,29 @@ function update() {
 	runTime = runTime + 1;
 }
 
-function updatePlayer() {
-	
-}
-function updateEnemys() {
+function updateEntities() {
+	checkKeys()
+	player.update();
 	for(var i=0;i<bullets.length;i++) {
 		bullets[i].update();
-		bullets[i].draw(ctx);
 	}
 	for(var i=0;i<guns.length;i++) {
 		guns[i].update();
-		guns[i].draw(ctx);
 	}
 	for(var i=0;i<missiles.length;i++) {
 		missiles[i].update();
-		missiles[i].draw(ctx)
 	}
 }
+
+
 function updateText() {
-	document.getElementById("guns").innerHTML = guns;
-	document.getElementById("bullets").innerHTML = bullets;
+	document.getElementById("guns").innerHTML = guns.length;
+	document.getElementById("bullets").innerHTML = bullets.length;
 }
-
-
-function renderBackGround(canvas, ctx) {
+function renderBackGround() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.drawImage(backgroundImg, 0, 0);
 }
-function renderGun(ctx, x, y, rotation) {
-	ctx.drawImage(gunImg,x,y);
-}
-function renderBullet(ctx, x, y, rotation) {
-	ctx.rotate = rotation;
-	ctx.drawImage(bulletImg, x, y);
-}
-function renderMissile(ctx, x, y, rotation) {
-	ctx.save();
-	ctx.rotate(15*Math.PI/180);
-	ctx.drawImage(missileImg, x, y);
-	ctx.restore();
-}
-
 function loadImages() {
 	backgroundImg = new Image();
 	playerImg = new Image();
@@ -75,7 +57,15 @@ function loadImages() {
 	gunImg = new Image();
 	missileImg = new Image();
 	backgroundImg.src = "images/background.jpeg";
+	playerImg.src = "images/player.png";
 	bulletImg.src = "images/bullet.png";
 	gunImg.src = "images/gun.png";
 	missileImg.src = "images/missile.png";
+}
+
+function checkBounds(x,y) {
+	if(x + 15 > canvas.width || y + 10 > canvas.height) 
+		return true;
+	else
+		return false;
 }

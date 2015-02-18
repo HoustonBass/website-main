@@ -1,20 +1,26 @@
-document.addEventListener("keydown", keyboardHandler);
-
-function keyboardHandler(e) {
-	//document.getElementById("lastKey").innerHTML = e.keyCode;
-	
-	if(e.keyCode == 65) //a
+function checkKeys() {
+	//debug
+	if(keys[49])
 		makeGun(Math.random() * (canvas.width - 20) + 10, 20, "down");
-	/*
-	if(e.keyCode == 83) //s
-		
-	if(e.keyCode == 81) //q
-		
-	if(e.keyCode == 87) //w
-		
-	if(e.keyCode == 69)//e
-		
-	if(e.keyCode == 82)//tab
-		
-	*/
+	//player movement
+	if(keys[87])
+		player.move(0,-1);
+	if(keys[65])
+		player.move(-1,0);
+	if(keys[83])
+		player.move(0,1);
+	if(keys[68])
+		player.move(1,0);
+}
+
+
+document.addEventListener("keydown", keyboardDown);
+document.addEventListener("keyup", keyboardUp);
+keys = [];
+
+function keyboardDown(e) {
+	keys[e.keyCode] = true;
+}
+function keyboardUp(e) {
+	delete keys[e.keyCode];
 }
