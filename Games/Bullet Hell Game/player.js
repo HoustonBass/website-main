@@ -1,7 +1,7 @@
 function player() {
 	this.health = 1;
-	this.x = 0;//canvas.width/2;
-	this.y = 0;//9 * canvas.height / 10;
+	this.x = canvas.width/2;
+	this.y = 9 * canvas.height / 10;
 	this.speed = 5;
 
 	this.update = function() {

@@ -57,8 +57,6 @@ function updateText() {
 	document.getElementById("redScore").innerHTML = redScore;
 	document.getElementById("blueScore").innerHTML = blueScore;
 	document.getElementById("tickNum").innerHTML = runTime;
-	document.getElementById("entityList").innerHTML = entities;
-	document.getElementById("deadpool").innerHTML = deadpool;
 }
 function updateEntities() {
 	for(var i=0; i< entities.length; i++) {
