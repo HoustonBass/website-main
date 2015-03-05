@@ -27,7 +27,7 @@ function run() {
 function update() {
 	var prime = true;
 	updateCurrent();
-	if(current != 1) { 
+	if(current != 1) {
 		for(testing=2; testing < current / 2 + 1;testing++) {
 			runTime = runTime + 1;
 			updateRuntime();
@@ -67,9 +67,7 @@ function updatePrimes() {
 		if(i%10 == 0)
 			list = list + "\n";
 	}
-	document.getElementById("primes").innerHTML = list;
-	
-	
+	document.getElementById("primes").innerHTML = list;	
 	document.getElementById("primeCount").innerHTML = primeCount;
 }
 function updateRuntime() {

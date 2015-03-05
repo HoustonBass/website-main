@@ -7,31 +7,22 @@
 
 	<body onload="init()">
 		<form>
-			Length of search: <input id="length" type="text"></input>
+			Enter potential prime: <input id="number" type="text"></input>
 			<br>
-			<button type="button" onclick="findPrimes()">Submit</button>
+			<button type="button" onclick="findIfPrime()">Submit</button>
 		</form>
 		<table>
 			<tr>
-				<td>Current</td>
-				<td id="current"></td>
-			</tr>
-			<tr>
 				<td>Testing</td>
 				<td id="testing"></td>
-			</tr>
-			<tr>
-				<td>Prime Count</td>
-				<td id="primeCount"></td>
 			</tr>
 			<tr>
 				<td>Run Time</td>
 				<td id="runTime"></td>
 			</tr>
 		</table>
-		<div id="primesContainer">
-			<h1>Primes</h1>
-			<p style="width = 100px;" id="primes">
+		<div id="prime">
+
 		</div>
 	</body>
 </html>
