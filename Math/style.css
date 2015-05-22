@@ -1,3 +1,67 @@
-table, th{
-	border: 1px solid black;
-}
+html,
+      body {
+        height: 100%;
+		background-color:#3F4B4E;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+	  .page-header {
+	  padding:10px;
+	  background-color:#343F41;
+		color:#E0E2E4;
+		border-color: #B96738;
+	  }
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #343F41;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+	  
+	  .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+	  #table {
+		margin:auto;
+		padding: 10px;
+		background-color: #2F393C;
+	  }
+	  table {
+		text-align:	center;
+		margin: auto;
+		font-size: 22px;
+	  }
+	  th {
+		text-decoration: underline;
+		color: #B3B66E;
+		text-align: center;
+		padding: 0px 20px 10px 20px; //top right bottom left
+	  }
+	  td {
+		padding: 0px 0px 10px 0px;
+	  }
