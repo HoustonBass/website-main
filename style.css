@@ -72,5 +72,8 @@ html,
 		margin: 18px 0px 0px 0px;
 		font-size: 25px;
 		padding: 12px;
-		color: #B96738;
+		color: #E0E2E4;
 	  }
+	 .server-online {
+		color:#B96738;
+	 }
