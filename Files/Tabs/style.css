@@ -1,10 +1,9 @@
 #table {
-	margin:auto;
-	padding: 10px;
+	text-align: center;
+	padding: 12px;
 	background-color: #2F393C;
 }
 	table {
-		text-align: center;
 		margin: auto;
 		font-size: 22px;
 	}
@@ -12,7 +11,7 @@
 		text-decoration: underline;
 		color: #B96738;
 		text-align: center;
-		padding: 0px 20px 10px 20px;
+		padding: 0px 20px 10px 20px; //top right bottom left
 	}
 	td {
 		padding: 0px 0px 10px 0px;
