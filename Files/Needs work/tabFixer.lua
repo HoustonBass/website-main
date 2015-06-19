@@ -1,0 +1,28 @@
+function readAll(file)
+    local f = io.open(file, "rb")
+    local content = f:read("*all")
+    f:close()
+    return content
+end
+
+file = arg[1]
+io.write("Reading file: " .. file .. "\n")
+content = readAll(file)
+io.write("Removing crap\n")
+content = content:gsub("<a.->(.-)</a>","%1")
+content = content:gsub("<div(.-)</div>",'')
+content = content:gsub("<head>(.-)</head>",'')
+content = content:gsub("<noscript>(.-)</noscript>",'')
+content = content:gsub("<script(.-)</script>",'')
+content = content:gsub("<!%-(.-)>",'')
+content = content:gsub("PUBLIC(.-)>",'>')
+content = content:gsub("%+ %-* %+(.-)%+ %-* %+",'')
+content = content:gsub("END(.-)</body>","</body>")
+content = content:gsub("End(.-)</body>","</body>")
+content = content:gsub("</h2>(.-)Artist","</h2>Artist")
+content = content:gsub("Chords by","by")
+io.write("Writing to new file\n")
+file = io.open("NEW" .. file, "w")
+file:write(content)
+file:close()
+io.write("Done!")
