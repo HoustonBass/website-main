@@ -41,9 +41,7 @@
 							}
 						?>
 					</table>
-					
 				</div>
-			
 			</div>
 
 			<div id="push"></div>
@@ -52,7 +50,6 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">Created by <a href="">Houston Bass</a> using <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://getbootstrap.com/examples/sticky-footer/">this</a> template.</p>
-				<a href="Taylor Swift/Red.html">Red</a>
 			</div>
 		</div>
 	<body>
