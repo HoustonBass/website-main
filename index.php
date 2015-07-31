@@ -1,11 +1,8 @@
 <!DOCTYPE HTML>
 <html> 
 	<head>
-		<title>Awesome</title>
-		<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
-		<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="base.css">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<?php include('config.php'); ?>
+		<?php include('DOCUMENT_ROOT' . '/Page Builders/php/headers/base.php');?>
 	</head>
 	
 	<body>
@@ -70,7 +67,7 @@
 							<th>Files</th>
 						</tr>
 						<tr>
-							<td><a href="Files/Tabs/index.php">Tabs</a><td>
+							<td><a href="Pages/Files/Tabs/index.php">Tabs</a><td>
 						</tr>
 					</table>
 				</div>

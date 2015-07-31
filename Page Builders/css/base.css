@@ -13,9 +13,12 @@ html,
 
 	  .page-header {
 	    padding:10px;
-	    background-color:#343F41;
-		color:#E0E2E4;
+		background-color:#343F41;
 		border-color: #B96738;
+	  }
+	  
+	  .page-header, .page-header a{
+		color:#E0E2E4;
 	  }
 	  
       #push,#footer {
