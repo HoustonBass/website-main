@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
 <html> 
 	<head>
-		<?php include('config.php'); ?>
-		<?php include('DOCUMENT_ROOT' . '/Page Builders/php/headers/base.php');?>
+		<?php include('/Page Builders/php/headers/base.php');?>
 	</head>
 	
 	<body>
